@@ -28,12 +28,12 @@ const App = () => {
       write: false,
       plugins: [unpkgPathPlugin()],
     });
-    console.log(result);
-    setCode(result.code);
+    // console.log(result);
+    setCode(result.outputFiles[0].text);
   };
 
   return (
-    <div>
+    <div style={{ zoom: 3 }}>
       <textarea value={input} onChange={(e) => setInput(e.target.value)} />
       <div>
         <button onClick={onClick}>Submit</button>
