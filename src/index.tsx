@@ -1,6 +1,6 @@
-import "bulmaswatch/superhero/bulmaswatch.min.css";
-import ReactDOM from "react-dom/client";
-import CodeCell from "./components/code-cell";
+import 'bulmaswatch/superhero/bulmaswatch.min.css';
+import ReactDOM from 'react-dom';
+import CodeCell from './components/code-cell';
 
 const App = () => {
   return (
@@ -9,6 +9,5 @@ const App = () => {
     </div>
   );
 };
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <App />
-);
+
+ReactDOM.render(<App />, document.querySelector('#root'));

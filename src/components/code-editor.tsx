@@ -1,7 +1,7 @@
 import "./code-editor.css";
 import "./syntax.css";
 import { useRef } from "react";
-import MonacoEditor, { EditorDidMount } from "@monaco-editor/react";
+import MonacoEditor, { OnChange } from "@monaco-editor/react";
 import prettier from "prettier";
 import parser from "prettier/parser-babel";
 
@@ -13,13 +13,22 @@ interface CodeEditorProps {
 const CodeEditor: React.FC<CodeEditorProps> = ({ onChange, initialValue }) => {
   const editorRef = useRef<any>();
 
-  const onEditorDidMount: EditorDidMount = (getValue, monacoEditor) => {
+  const onEditorDidMount: OnChange = (getValue, monacoEditor) => {
     editorRef.current = monacoEditor;
-    monacoEditor.onDidChangeModelContent(() => {
-      onChange(getValue());
-    });
+    onChange(getValue ?? "");
 
-    monacoEditor.getModel()?.updateOptions({ tabSize: 2 });
+    // const highlighter = new Highlighter(
+    //   // @ts-ignore
+    //   window.monaco,
+    //   codeShift,
+    //   monacoEditor
+    // );
+    // highlighter.highLightOnDidChangeModelContent(
+    //   () => {},
+    //   () => {},
+    //   undefined,
+    //   () => {}
+    // );
   };
 
   const onFormatClick = () => {
@@ -50,11 +59,11 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ onChange, initialValue }) => {
         Format
       </button>
       <MonacoEditor
-        editorDidMount={onEditorDidMount}
-        height="500px"
+        onChange={onEditorDidMount}
         value={initialValue}
-        theme="dark"
+        theme="vs-dark"
         language="javascript"
+        height="100%"
         options={{
           wordWrap: "on",
           minimap: { enabled: false },
