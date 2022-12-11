@@ -1,18 +1,18 @@
-import { useState, useEffect } from "react";
-import CodeEditor from "./code-editor";
-import Preview from "./preview";
-import bundle from "../bundler";
-import Resizable from "./resizable";
-import { Cell } from "../state";
-import { useActions } from "../hooks/use-actions";
+import { useState, useEffect } from 'react';
+import CodeEditor from './code-editor';
+import Preview from './preview';
+import bundle from '../bundler';
+import Resizable from './resizable';
+import { Cell } from '../state';
+import { useActions } from '../hooks/use-actions';
 
 interface CodeCellProps {
   cell: Cell;
 }
 
 const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
-  const [code, setCode] = useState("");
-  const [err, setErr] = useState("");
+  const [code, setCode] = useState('');
+  const [err, setErr] = useState('');
   const { updateCell } = useActions();
 
   useEffect(() => {
@@ -31,9 +31,9 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
     <Resizable direction="vertical">
       <div
         style={{
-          height: "calc(100%-10px)",
-          display: "flex",
-          flexDirection: "row",
+          height: 'calc(100% - 10px)',
+          display: 'flex',
+          flexDirection: 'row',
         }}
       >
         <Resizable direction="horizontal">

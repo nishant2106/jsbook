@@ -1,5 +1,5 @@
-import "./preview.css";
-import { useRef, useEffect } from "react";
+import './preview.css';
+import { useRef, useEffect } from 'react';
 
 interface PreviewProps {
   code: string;
@@ -18,11 +18,11 @@ const html = `
             const root = document.querySelector('#root');
             root.innerHTML = '<div style="color: red;"><h4>Runtime Error</h4>' + err + '</div>';
             console.error(err);
-          }
+          };
 
-          window.addEventListener('error',(event) => {
+          window.addEventListener('error', (event) => {
             event.preventDefault();
-            handleError(event.error)
+            handleError(event.error);
           });
 
           window.addEventListener('message', (event) => {
@@ -42,9 +42,8 @@ const Preview: React.FC<PreviewProps> = ({ code, err }) => {
 
   useEffect(() => {
     iframe.current.srcdoc = html;
-
     setTimeout(() => {
-      iframe.current.contentWindow.postMessage(code, "*");
+      iframe.current.contentWindow.postMessage(code, '*');
     }, 50);
   }, [code]);
 
