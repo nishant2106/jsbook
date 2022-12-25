@@ -18,19 +18,20 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ onChange, initialValue }) => {
   const onEditorDidMount: OnChange = (getValue, monacoEditor) => {
     editorRef.current = monacoEditor;
     onChange(getValue ?? "");
-
-    const highlighter = new Highlighter(
-      // @ts-ignore
-      window.monaco,
-      codeShift,
-      monacoEditor
-    );
-    highlighter.highLightOnDidChangeModelContent(
-      () => {},
-      () => {},
-      undefined,
-      () => {}
-    );
+    try {
+      const highlighter = new Highlighter(
+        // @ts-ignore
+        window.monaco,
+        codeShift,
+        monacoEditor
+      );
+      highlighter.onChange(
+        () => {},
+        () => {},
+        undefined,
+        () => {}
+      );
+    } catch (e) {}
   };
 
   const onFormatClick = () => {
