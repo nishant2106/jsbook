@@ -9,7 +9,6 @@ const App = () => {
   return (
     <Provider store={store}>
       <div>
-        df
         <CellList />
       </div>
     </Provider>
