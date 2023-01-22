@@ -1,5 +1,5 @@
 {
-  "name": "jsbook",
+  "name": "@nishant-jsbook/jsbook",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
